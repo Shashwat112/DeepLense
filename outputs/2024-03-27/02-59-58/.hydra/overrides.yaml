@@ -1,4 +1,0 @@
-- experiment_name=diffusion
-- model_used=diff_unet
-- experiment.diffusion.diff_unet.test_param.samples=5
-- experiment.diffusion.diff_unet.test_param.sampling_technique=ddpm
