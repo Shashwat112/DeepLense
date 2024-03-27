@@ -1,0 +1,25 @@
+experiment:
+
+  super_resolution:
+
+    srcnn:
+
+      desired_dataloader_lr_shape: [1,75,75]
+      desired_dataloader_hr_shape: [1,150,150]
+
+      desired_model_output_shape: [1,150,150]
+
+    srgan:
+
+      desired_dataloader_lr_shape: [1,75,75]
+      desired_dataloader_hr_shape: [1,150,150]
+
+      desired_discriminator_output_shape: [1]
+      desired_generator_output_shape: [1,150,150]
+
+  diffusion:
+
+    diff_unet:
+
+      desired_dataloader_shape: [1,150,150]
+      desired_model_output_shape: [1,150,150]

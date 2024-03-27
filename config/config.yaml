@@ -1,0 +1,105 @@
+defaults:
+ - struct_config
+ - _self_
+
+experiment_name: diffusion
+model_used: diff_unet
+dataset_used: ???
+device: cpu
+ddp: False  # Distributed Data Parallel
+backup_checkpoints: 5
+
+experiment:
+
+  super_resolution:
+
+    lr_shape: [1,75,75]
+    hr_shape: [1,150,150]
+
+    dataset:
+      path: [/Users/home/Documents/GSoC24 Repositories/DeepLense/datasets/Test 3A/LR,/Users/home/Documents/GSoC24 Repositories/DeepLense/datasets/Test 3A/HR]
+      download_data: False
+      url: ???
+      train_test_split: [0.9,0.1]
+
+    srcnn:
+
+      model_arch:
+        encoder_channel_sequence: [1,32,64,128,256]
+        decoder_channel_sequence: [256,128,64,32,16,1]
+
+      train_param:
+        weight_init: xavier_uniform
+        bias_init: zeros
+        optimizer: Adam
+        learning_rate: 0.0001
+        betas: ???
+        weight_decay: ???
+        batch_size: 64
+        show_plot: True
+        metrics: ['mse','ssim','psnr']
+        epochs: 10
+
+      test_param:
+        batch_size: &bs 50
+
+    srgan:
+
+      model_arch:
+        discriminator_channel_sequence: [1,64,64,128,128,256,256,512,512]
+        generator_residual_blocks: 2
+        residual_channel_number: 64
+        upsample_architecture: [64,64,1] # [128,256,1]
+
+      train_param:
+        gen_weight_init: xavier_uniform
+        gen_bias_init: zeros
+        gen_optimizer: Adam
+        gen_learning_rate: 0.0001
+        gen_betas: ???
+        gen_weight_decay: ???
+
+        dis_weight_init: xavier_uniform
+        dis_bias_init: zeros
+        dis_optimizer: Adam
+        dis_learning_rate: 0.0001
+        dis_betas: ???
+        dis_weight_decay: ???
+
+        batch_size: 2
+        show_plot: True
+        metrics: ['mse','ssim','psnr']
+        epochs: 10
+        pretrain: True
+      
+      test_param:
+        batch_size: *bs
+
+  diffusion:
+
+    shape: [1,150,150]
+    timesteps: 500
+    noising_schedule: linear
+
+    dataset:
+      path: /Users/home/Documents/GSoC24 Repositories/DeepLense/datasets/Test 4
+      download_data: False
+      url: ???
+
+    diff_unet:
+
+      train_param: 
+        weight_init: xavier_uniform
+        bias_init: zeros
+        optimizer: Adam
+        learning_rate: 0.0001
+        betas: ???
+        weight_decay: ???
+        batch_size: 64
+        show_plot: True
+        metrics: ['mse']
+        epochs: 10
+      
+      test_param:
+        samples: 10
+        sampling_technique: ddpm
