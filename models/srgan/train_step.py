@@ -5,7 +5,7 @@ from models.srgan import train_param as tp
 from engine import optimizer, weight_initializer
 from engine.loss import bce, vgg, mse
 
-dev = torch.device('mps') if torch.backends.mps.is_available() and device=='gpu' else torch.device('cpu')
+dev = torch.device('cuda') if torch.cuda.is_available() and device=='gpu' else torch.device('cpu')
 
 G = Model.Generator().to(dev)
 D = Model.Discriminator().to(dev)

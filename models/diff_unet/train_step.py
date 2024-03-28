@@ -12,7 +12,7 @@ if ddp:
     from torch.nn.parallel import DistributedDataParallel as DDP
     dev = int(os.environ['LOCAL_RANK'])
 else:
-    dev = torch.device('mps') if torch.backends.mps.is_available() and device=='gpu' else torch.device('cpu')
+    dev = torch.device('cuda') if torch.cuda.is_available() and device=='gpu' else torch.device('cpu')
 
 model = Model().to(dev)
 if ddp:
