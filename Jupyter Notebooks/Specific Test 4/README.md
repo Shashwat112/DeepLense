@@ -3,7 +3,7 @@
 
 ## Sample generated images (gif)
 
-![gif](https://github.com/Shashwat112/DeepLense/blob/2f83e1c73b4410c94717dbf7c93d9192a7460d1f/Jupyter%20Notebooks/Specific%20Test%204/diffusion.gif)
+![gif](Jupyter Notebooks/Specific Test 4/diffusion.gif)
 
 ## FID Scores
 
