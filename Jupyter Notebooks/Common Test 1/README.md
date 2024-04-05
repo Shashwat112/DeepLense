@@ -9,9 +9,9 @@
 
 ## ROC curves
 
-![no_vs_all](Jupyter Notebooks/Common Test 1/no_vs_all.png)
+![no_vs_all](no_vs_all.png)
 
-![sphere_vs_all](Jupyter Notebooks/Common Test 1/sphere_vs_all.png)
+![sphere_vs_all](sphere_vs_all.png)
 
-![vort_vs_all](Jupyter Notebooks/Common Test 1/vort_vs_all.png)
+![vort_vs_all](vort_vs_all.png)
 

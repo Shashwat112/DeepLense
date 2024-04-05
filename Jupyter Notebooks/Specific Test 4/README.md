@@ -3,7 +3,7 @@
 
 ## Sample generated images (gif)
 
-![gif](Jupyter Notebooks/Specific Test 4/diffusion.gif)
+![gif](diffusion.gif)
 
 ## FID Scores
 
